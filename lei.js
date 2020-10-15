@@ -38,7 +38,7 @@ function roll(){
 	} while(second == first);
 	do {
 		var third = leistuff[rando(len)];
-	} while(second == third);
+	} while(second == third || first == third);
 	document.getElementById("first").innerHTML = first;
 	document.getElementById("second").innerHTML = second;
 	document.getElementById("third").innerHTML = third;
