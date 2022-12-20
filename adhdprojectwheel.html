@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> what project to do today </title>
+</head>
+<body>
+
+<h1 id="shake"> State thy fate! </h1>
+
+<textarea id="hell" placeholder="type your shit projects here...">
+
+</textarea>
+
+<button id="coolguy">the wheel of fate is turning </button>
+
+<script>
+    //hello jpg
+    var inputthing = document.getElementById("hell");
+
+    var coolbutton = document.getElementById("coolguy");
+    var previous = "";
+
+    coolbutton.onclick = function() { 
+        let thing = inputthing.value;
+        let arrthing = thing.split(/\r?\n/g);
+
+        var random = Math.floor(Math.random() * arrthing.length);
+
+        let shake = document.getElementById("shake")
+        
+        shake.innerHTML = (arrthing[random]);
+
+        if (arrthing[random] == previous)
+        {
+            shake.style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
+        }
+        else
+        {
+            shake.style.color = "black";
+        }
+        previous = arrthing[random];
+        
+    }
+    
+
+</script>
+
+</body>
+
+</html>
