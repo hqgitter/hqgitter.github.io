@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<style>
+body {
+	font-size: 2em;
+	display:flex;
+	flex-direction: column;
+ 	justify-content: center;
+	align-items:center;
+	
+}
+.buttons {
+	position: fixed;
+	bottom: 5%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+button {
+	font-size: 1em;
+	size: 20%;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	</head>
+
+	<body>
+		<button id="starter" onclick="start()">start</button>
+		<div id="game" style="display:none; flex-direction: column">
+		<p id="top" style="color: red">Hi</p>
+
+		<p id="bot" style="color:blue">yo</p>
+		<div class="buttons">
+		<button onclick="yes()">Yes</button>
+		<button onclick="no()">No</button>
+		</div>
+		<p id="score">0</p>
+		<p id="count">33</p>
+		</div>
+		<script>
+		var score = 0;
+		var timer = 30;
+		var alpha = ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"];
+		var yesman = document.getElementById("top");
+		var noman = document.getElementById("bot");
+		var correct = False;
+                function redCorrect(x) {
+			return x % 2 == 0;
+		}
+		function bluCorrect(x){
+			return x == "A" || x == "E" || x == "I" || x == "O" || x == "U";}
+		
+		function countdown(){
+			document.getElementById("count").innerHTML = timer.toString();
+			timer -= 1;
+			if (timer < 0){
+				alert("Game Over! Your score: " + score.toString());
+				timer = 30;
+			}
+		}
+
+		function click() {
+			let red = Math.floor(Math.random()*9) + 1;
+			let blu = alpha[Math.floor(Math.random()*alpha.length)];
+				let randthing = Math.random();
+				if (randthing > 0.5) {
+					
+					yesman.innerHTML = blu + red.toString();
+					noman.innerHTML = ""; 
+					correct = redCorrect(red);
+
+				}
+				else {
+					noman.innerHTML = blu + red.toString();
+					yesman.innerHTML = "";
+					correct = bluCorrect(blu);
+
+				}
+			}
+		function yes() {
+			if (correct){ updScore(1);}
+			else {updScore(-1);}
+			click();
+			}
+		function no() {
+			if (!correct) {updScore(1);} else {updScore(-1);}
+			click();
+
+		} 
+		function updScore(x) {
+			
+			score += x;
+			document.getElementById("score").innerHTML = score.toString(); }
+
+		function start(){
+			click();
+			timer = 30;
+			score = 0;
+			document.getElementById("game").style.display = "flex";
+			document.getElementById("starter").style.display = "none";
+			var clock = setInterval("countdown()",1000);
+			setTimeout(function () { clearInterval(clock);
+				document.getElementById("starter").style.display = "flex";
+				document.getElementById("game").style.display = "none";
+
+			}, 31000);
+
+		}
+
+		</script>
+	</body> </html>
