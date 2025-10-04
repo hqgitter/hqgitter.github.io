@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="gamba.js"></script>
+    <style>
+
+        .joker {
+            size: 2em;
+            font-size: 1.5em;
+            width: 10em;
+            height: 10em;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: right;
+        }
+
+        .joker label {
+            padding: 0.1em;
+        }
+
+        input {
+            transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            /*-moz-transform: scale(1.5);
+            */  
+        }
+
+        .gamble {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .gamble button{
+            size:5em;
+            font-size: 3em;
+        }
+
+        .log {
+            position:fixed;
+            bottom:0;
+            right:0;
+            margin-bottom: 2em;
+            margin-right : 2em;
+            width: 20%;
+            height: 40%;
+            background-color: rgb(255, 255, 255);
+            outline-width: 0.5em;
+            outline-style: solid;
+            outline-color: black;
+            color: black;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+        }
+
+
+        .log ul {
+            overflow: auto;
+        }
+
+    </style>
+</head>
+
+<body onload="createTicketList()">
+
+    <div class="gamble">
+
+        <button onclick="gamble()">GAMBLE!!!</button>
+    </div>
+
+    <div class="gamble">
+        <h1 id="output"></h1>
+    </div>
+    
+    <div class="gamble">
+
+        <h2 id="count">$3000000000</h2> <br>
+        <h2 id="jackpot">$1000000</h2>
+        <h2 id="days">0 days of draws</h2>
+
+    </div>
+
+    <div class="gamble">
+        <button onclick="toggleInterval()">Auto-Gamble</button>
+    </div>
+    
+    <!-- Ticket-->
+    <div class="gamble">
+
+        <div id="Ticket" class="joker">
+
+        </div>
+    </div>
+
+    <div class="log">
+        <ul id="logger">
+
+        </ul>
+    </div>
+
+</body>
+
+
+</html>
