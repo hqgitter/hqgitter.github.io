@@ -106,7 +106,7 @@ function gamble(){
         clicks -= 1;
         //jackpot += 1 * 0.54
         document.getElementById("count").innerHTML = "$" + clicks.toString();
-        document.getElementById("jackpot").innerHTML = "$" + jackpot.toFixed(2);
+        document.getElementById("jackpot").innerHTML = "Jackpot Amount: $" + jackpot.toFixed(2);
 
         days += 1;
         if (days % 365 == 0) {
